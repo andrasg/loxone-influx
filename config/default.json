@@ -1,0 +1,33 @@
+	{
+	"loxone" : {
+		"host": "192.168.20.244",
+		"username": "andrasg",
+		"password": ""
+	},
+	
+	"influxdb" : {
+		"host": "192.168.20.6:8086",
+		"database": "loxone"
+	},
+	
+	"uuids" : {
+		"121b4263-0076-a6f9-ffff37ab13c36df3": {"measurement": "switch", "tags": { "room": "Bedroom"} },
+		"11ed772e-02ea-522d-ffff796b564594c0": {"measurement": "boilercontrol", "tags": {} },
+		"124e6c66-031c-0851-ffff796b564594c0": {"measurement": "temp", "tags": { "room": "Outside" }},
+		"12836115-015f-7020-ffff796b564594c0": {"measurement": "temp", "tags": { "room": "WC" }},
+		"124e8e65-034d-edd6-ffff796b564594c0": {"measurement": "temp", "tags": { "room": "LivingRoom" }},
+		"12118607-0185-adec-ffff796b564594c0": {"measurement": "temp", "tags": { "room": "Bebu1" }},
+		"12118609-02c2-b0fe-ffff796b564594c0": {"measurement": "temp", "tags": { "room": "Bebu2" }},
+		"12569922-033c-70f6-ffff796b564594c0": {"measurement": "heatingtemp", "tags": { "type": "BoilerExpected" }},
+		"124ebf71-01c3-c89d-ffff796b564594c0": {"measurement": "heatingtemp", "tags": { "type": "RadiatorExpected" }},
+		"1231a42e-0390-838a-ffff796b564594c0": {"measurement": "heatingtemp", "tags": { "type": "RadiatorForward" }},
+		"1231a8ba-0183-3165-ffff796b564594c0": {"measurement": "heatingtemp", "tags": { "type": "RadiatorBack" }},
+		"1231aab3-007a-6d31-ffff796b564594c0": {"measurement": "heatingtemp", "tags": { "type": "BoilerForward" }},
+		"1231a993-0387-3e79-ffff796b564594c0": {"measurement": "heatingtemp", "tags": { "type": "BoilerBack" }},
+		"124ebf76-00d8-d91d-ffff796b564594c0": {"measurement": "heatingtemp", "tags": { "type": "UFHExpected" }},
+		"12319f79-026e-4d2b-ffff796b564594c0": {"measurement": "heatingtemp", "tags": { "type": "UFHForward" }},
+		"1231a7a2-01b1-0f0a-ffff796b564594c0": {"measurement": "heatingtemp", "tags": { "type": "UFHBack" }},
+		"122c6fd0-0056-abde-ffff796b564594c0": {"measurement": "heating", "tags": { "type": "pump", "name": "UFH pump" }},
+		"120f23ad-02dd-152b-ffff796b564594c0": {"measurement": "heating", "tags": { "type": "pump", "name": "Radiator pump" }}
+	}
+}
