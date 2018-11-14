@@ -1,5 +1,5 @@
 //
-// Author: R.A.Rainton <robin@rainton.com>
+// Original Author: R.A.Rainton <robin@rainton.com>
 //
 // Simple script to import Loxone stats into Influx DB.
 //
@@ -32,6 +32,7 @@
 //
 
 const config = require("config");
+
 var LoxoneAPI = require('node-lox-ws-api');
 var lox = new LoxoneAPI(config.loxone.host, config.loxone.username, config.loxone.password, true, 'AES-256-CBC' /*'Hash'*/);
 
@@ -85,6 +86,17 @@ function retryConnect() {
     setTimeout(function () { lox.connect(); }, delayInMilliseconds);
 }
 
+function getTags(tags) {
+    var message = "";
+    for (var tag in tags) {
+        message += tag.toString() + '=' + tags[tag].toString() + ', ';
+    }
+    if (message.length > 0) {
+        message = message.substring(0, message.length - 2);
+    }
+    return message;
+}
+
 lox.on('connected', function() {
     log_info("Loxone connected!");
     retryCount = 0;
@@ -129,8 +141,8 @@ lox.on('authorized', function() {
 
 lox.on('update_event_value', function(uuid, evt) {
     if (uuid in config.uuids) {
-		log_info('Update event value: uuid='+uuid+', evt='+limit_str(evt, 100)+'');
-		var writeData = config.uuids[uuid];
+		log_info(config.uuids[uuid].measurement + ', ' + getTags(config.uuids[uuid].tags) + ', value=' + limit_str(evt, 100));
+		var writeData = JSON.parse(JSON.stringify(config.uuids[uuid])); // clone object
 		writeData.tags["uuid"] = uuid;
 		writeData.tags["src"] = "ws";
 		writeData.fields = { "value" : evt }
