@@ -97,7 +97,7 @@ function getTags(tags) {
     return message;
 }
 
-lox.on('connected', function() {
+lox.on('connect', function() {
     log_info("Loxone connected!");
     retryCount = 0;
 });

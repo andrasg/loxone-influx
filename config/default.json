@@ -15,11 +15,14 @@
 		"11ed772e-02ea-522d-ffff796b564594c0": {"measurement": "boilercontrol", "tags": { } },
 		"124e6c66-031c-0851-ffff796b564594c0": {"measurement": "temp", "tags": { "room": "Outside" }},
 		"12836115-015f-7020-ffff796b564594c0": {"measurement": "temp", "tags": { "room": "WC" }},
-		"124e8e65-034d-edd6-ffff796b564594c0": {"measurement": "temp", "tags": { "room": "LivingRoom" }},
+		"124e8e65-034d-edd6-ffff796b564594c0": {"measurement": "temp", "tags": { "room": "LivingroomAvg" }},
 		"12118607-0185-adec-ffff796b564594c0": {"measurement": "temp", "tags": { "room": "Bebu1" }},
 		"12118609-02c2-b0fe-ffff796b564594c0": {"measurement": "temp", "tags": { "room": "Bebu2" }},
 		"1211860c-0243-b72b-ffff796b564594c0": {"measurement": "temp", "tags": { "room": "Bedroom" }},
 		"1283610f-0050-3d1e-ffff796b564594c0": {"measurement": "temp", "tags": { "room": "Study" }},
+		"121185ff-031c-aadd-ffff796b564594c0": {"measurement": "temp", "tags": { "room": "Entry" }},		
+		"121185fc-03bd-a7d1-ffff796b564594c0": {"measurement": "temp", "tags": { "room": "Kicthen" }},		
+		"125653f8-000d-e24b-ffff796b564594c0": {"measurement": "temp", "tags": { "room": "Livingroom" }},
 		"12569922-033c-70f6-ffff796b564594c0": {"measurement": "heatingtemp", "tags": { "type": "BoilerExpected" }},
 		"124ebf71-01c3-c89d-ffff796b564594c0": {"measurement": "heatingtemp", "tags": { "type": "RadiatorExpected" }},
 		"1231a42e-0390-838a-ffff796b564594c0": {"measurement": "heatingtemp", "tags": { "type": "RadiatorForward" }},
@@ -31,17 +34,22 @@
 		"1231a7a2-01b1-0f0a-ffff796b564594c0": {"measurement": "heatingtemp", "tags": { "type": "UFHBack" }},
 		"122c6fd0-0056-abde-ffff796b564594c0": {"measurement": "heating", "tags": { "type": "pump", "name": "UFH pump" }},
 		"120f23ad-02dd-152b-ffff796b564594c0": {"measurement": "heating", "tags": { "type": "pump", "name": "Radiator pump" }},
+		"1291525c-022a-b722-ffff796b564594c0": {"measurement": "heating", "tags": { "type": "pump", "name": "ITC Radiator pump" }},
 		"124e8506-0057-9930-ffff796b564594c0": {"measurement": "valve", "tags": { "room": "Bebu1" }},
 		"124e8564-0257-6578-ffff796b564594c0": {"measurement": "valve", "tags": { "room": "Bebu2" }},
 		"124e84d5-0335-4a9c-ffff796b564594c0": {"measurement": "valve", "tags": { "room": "Study" }},
 		"124d71ff-0022-9034-ffff796b564594c0": {"measurement": "valve", "tags": { "room": "LivingRoom" }},
 		"124e8599-0021-1263-ffff796b564594c0": {"measurement": "valve", "tags": { "room": "Bedroom" }},
-		"120f23ad-02dd-152e-ffff796b564594c0": {"measurement": "hotwater", "tags": { "type": "pump", "name": "Hotwater pump" }},
-		"1231ac7d-01a3-7a4d-ffff796b564594c0": {"measurement": "hotwatertemp", "tags": { "type": "HotwaterBack" }}
-
-		
-		
-		
-
+		"124d689d-01d4-2e9d-ffff83f1a44a0ae3": {"measurement": "hotwater", "tags": { "type": "pump", "name": "Hotwater pump" }},
+		"1231ac7d-01a3-7a4d-ffff796b564594c0": {"measurement": "hotwatertemp", "tags": { "type": "HotwaterBack" }},
+		"1283659d-0117-f04a-ffff796b564594c0": {"measurement": "humidity", "tags": { "room": "Bathroom" }},
+		"1281b24a-0018-fa11-ffff796b564594c0": {"measurement": "humidity", "tags": { "room": "Pantry" }},
+		"12836546-0132-9e72-ffff796b564594c0": {"measurement": "humidity", "tags": { "room": "WC" }},
+		"124e7057-005a-a3be-ffff796b564594c0": {"measurement": "humidity", "tags": { "room": "Outside" }},
+		"125ddd63-0017-124a-ffff909e24312235": {"measurement": "mode", "tags": { "name": "EverybodyAway" }},
+		"1231ad36-0145-876d-ffff796b564594c0": {"measurement": "floortemp", "tags": { "location": "Couch" }},
+		"1231adf5-031a-9491-ffff796b564594c0": {"measurement": "floortemp", "tags": { "location": "Kitchen" }},
+		"1231aeba-00a9-a1b9-ffff796b564594c0": {"measurement": "floortemp", "tags": { "location": "Center" }},
+		"126a0cbe-006e-0148-ffff796b564594c0": {"measurement": "floortemp", "tags": { "location": "LivingroomAvg" }}
 	}
 }
