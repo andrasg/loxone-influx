@@ -8,7 +8,9 @@
 		"config": "*",
 		"influx": "*"
 	},
-	"devDependencies": {},
+	"devDependencies": {
+		"@types/node": "^10.12.9"
+	},
 	"scripts": {
 		"start": "node loxone-ws-influx.js"
 	},

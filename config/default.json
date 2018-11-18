@@ -23,6 +23,8 @@
 		"121185ff-031c-aadd-ffff796b564594c0": {"measurement": "temp", "tags": { "room": "Entry" }},		
 		"121185fc-03bd-a7d1-ffff796b564594c0": {"measurement": "temp", "tags": { "room": "Kicthen" }},		
 		"125653f8-000d-e24b-ffff796b564594c0": {"measurement": "temp", "tags": { "room": "Livingroom" }},
+		"1281b0a1-0364-5b42-ffff796b564594c0": {"measurement": "temp", "tags": { "room": "Pantry" }},
+		"12836118-0247-89a7-ffff796b564594c0": {"measurement": "temp", "tags": { "room": "BedroomA" }},		
 		"12569922-033c-70f6-ffff796b564594c0": {"measurement": "heatingtemp", "tags": { "type": "BoilerExpected" }},
 		"124ebf71-01c3-c89d-ffff796b564594c0": {"measurement": "heatingtemp", "tags": { "type": "RadiatorExpected" }},
 		"1231a42e-0390-838a-ffff796b564594c0": {"measurement": "heatingtemp", "tags": { "type": "RadiatorForward" }},
@@ -50,6 +52,9 @@
 		"1231ad36-0145-876d-ffff796b564594c0": {"measurement": "floortemp", "tags": { "location": "Couch" }},
 		"1231adf5-031a-9491-ffff796b564594c0": {"measurement": "floortemp", "tags": { "location": "Kitchen" }},
 		"1231aeba-00a9-a1b9-ffff796b564594c0": {"measurement": "floortemp", "tags": { "location": "Center" }},
-		"126a0cbe-006e-0148-ffff796b564594c0": {"measurement": "floortemp", "tags": { "location": "LivingroomAvg" }}
+		"126a0cbe-006e-0148-ffff796b564594c0": {"measurement": "floortemp", "tags": { "location": "LivingroomAvg" }},
+		"1293f2f2-027e-e0a9-ffff796b564594c0": {"measurement": "heatingload", "tags": { "name": "UFH" }},
+		"1293f2e9-032a-9269-ffff796b564594c0": {"measurement": "heatingload", "tags": { "name": "Radiator" }},
+		"1293f3d0-00c9-a460-ffff796b564594c0": {"measurement": "heatingload", "tags": { "name": "HighLoad" }}
 	}
 }

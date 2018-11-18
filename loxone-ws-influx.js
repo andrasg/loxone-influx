@@ -46,6 +46,8 @@ var debug = false;
 var interval;
 var retryCount = 0;
 const maxRetryDelayInMs = 30 * 1000;
+const periodicSendIntervalInMs = 10 * 60 * 1000;
+var objectTracker = { };
 
 function log_error(message) {
     console.log((new Date().toISOString())+' ERROR : '+message);
@@ -97,12 +99,43 @@ function getTags(tags) {
     return message;
 }
 
+function sendOldValues() {
+    for(var uuid in objectTracker) {
+        if (objectTracker[uuid].lastSeen + periodicSendIntervalInMs < Date.now()) {
+            objectTracker[uuid].lastSeen = Date.now();
+            sendToInflux(uuid, objectTracker[uuid].lastValue, "old");
+        }
+    }
+}
+
+function updateTracker(uuid, value) {
+    if (objectTracker[uuid] === undefined) {
+        objectTracker[uuid] = { };
+        objectTracker[uuid].config = config.uuids[uuid];
+    }
+    
+    objectTracker[uuid].lastSeen = Date.now();
+    objectTracker[uuid].lastValue = value;
+}
+
+function sendToInflux(uuid, value, source) {
+    var writeData = JSON.parse(JSON.stringify(config.uuids[uuid])); // clone object
+    writeData.tags["uuid"] = uuid;
+    writeData.tags["src"] = source;
+    writeData.fields = { "value" : value }
+    log_debug(source + ' - ' + writeData.measurement + ', ' + getTags(writeData.tags) + ', value: ' + value);
+    influxdb.writePoints([ writeData ]).catch(err => {
+    	log_error(`Error saving data to InfluxDB! ${err.stack}`)
+    });
+}
+
 lox.on('connect', function() {
     log_info("Loxone connected!");
     retryCount = 0;
 });
 
 lox.on('close', function() {
+    clearInterval(interval);
     log_info("Loxone closed!");
 });
 
@@ -121,6 +154,7 @@ lox.on('connect_failed', function(error) {
 });
 
 lox.on('connection_error', function(error) {
+    clearInterval(interval);
     if (error != undefined) {
         log_info('Loxone connection error: ' + error.toString());
     }
@@ -136,19 +170,17 @@ lox.on('auth_failed', function(error) {
 
 lox.on('authorized', function() {
     log_info('Loxone authorized');
-    setTimeout(function(){ lox.send_command('jdev/cfg/version') }, 5000);
+    setTimeout(function() { lox.send_command('jdev/cfg/version') }, 5000);
+    interval = setInterval(function() { sendOldValues() }, 10000);
 });
 
 lox.on('update_event_value', function(uuid, evt) {
     if (uuid in config.uuids) {
 		log_info(config.uuids[uuid].measurement + ', ' + getTags(config.uuids[uuid].tags) + ', value=' + limit_str(evt, 100));
-		var writeData = JSON.parse(JSON.stringify(config.uuids[uuid])); // clone object
-		writeData.tags["uuid"] = uuid;
-		writeData.tags["src"] = "ws";
-		writeData.fields = { "value" : evt }
-		influxdb.writePoints([ writeData ]).catch(err => {
-			log_error(`Error saving data to InfluxDB! ${err.stack}`)
-		});
+        
+        updateTracker(uuid, evt);
+        sendToInflux(uuid, evt, "ws");
+
 	} else {
 		log_debug('Ignoring event value: uuid='+uuid+', evt='+limit_str(evt, 100)+'');
 	}
