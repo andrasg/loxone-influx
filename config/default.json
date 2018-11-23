@@ -1,4 +1,4 @@
-	{
+{
 	"loxone" : {
 		"host": "192.168.20.244",
 		"username": "andrasg",
@@ -8,6 +8,11 @@
 	"influxdb" : {
 		"host": "192.168.20.6:8086",
 		"database": "loxone"
+	},
+
+	"intervals": {
+		"maxRetryDelayInSec" : 300,
+		"periodicSendIntervalInSec": 600
 	},
 	
 	"uuids" : {
@@ -55,6 +60,14 @@
 		"126a0cbe-006e-0148-ffff796b564594c0": {"measurement": "floortemp", "tags": { "location": "LivingroomAvg" }},
 		"1293f2f2-027e-e0a9-ffff796b564594c0": {"measurement": "heatingload", "tags": { "name": "UFH" }},
 		"1293f2e9-032a-9269-ffff796b564594c0": {"measurement": "heatingload", "tags": { "name": "Radiator" }},
-		"1293f3d0-00c9-a460-ffff796b564594c0": {"measurement": "heatingload", "tags": { "name": "HighLoad" }}
+		"1293f3d0-00c9-a460-ffff796b564594c0": {"measurement": "heatingload", "tags": { "name": "HighLoad" }},
+		"123309c3-014b-c497-ffff837b80170ee4": {"measurement": "ElectricPower", "tags": { }, "intervalSec": 0 },
+		"123309c3-014b-c49a-ffff837b80170ee4": {"measurement": "electricity", "tags": { }, "intervalSec": 3600, "yesterday": true },
+		"12203786-0096-2a36-ffff6620e13ff361": {"measurement": "gas", "tags": { }, "intervalSec": 3600, "yesterday": true },
+		"123308ec-002b-b932-ffff67bf61ebaa47": {"measurement": "water", "tags": { }, "intervalSec": 3600, "yesterday": true },
+		"123309c3-014b-c496-ffff837b80170ee4": {"measurement": "electricityMeter", "tags": { }},
+		"12203786-0096-2a32-ffff6620e13ff361": {"measurement": "gasMeter", "tags": { }},
+		"123308ec-002b-b92e-ffff67bf61ebaa47": {"measurement": "waterMeter", "tags": { }}
+		
 	}
 }

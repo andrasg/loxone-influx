@@ -45,8 +45,8 @@ const influxdb = new Influx.InfluxDB({
 var debug = false;
 var interval;
 var retryCount = 0;
-const maxRetryDelayInMs = 30 * 1000;
-const periodicSendIntervalInMs = 10 * 60 * 1000;
+const maxRetryDelayInMs = config.intervals.maxRetryDelayInSec * 1000;
+const periodicSendIntervalInMs = config.intervals.periodicSendIntervalInSec * 1000;
 var objectTracker = { };
 
 function log_error(message) {
@@ -101,7 +101,14 @@ function getTags(tags) {
 
 function sendOldValues() {
     for(var uuid in objectTracker) {
-        if (objectTracker[uuid].lastSeen + periodicSendIntervalInMs < Date.now()) {
+        var interval = periodicSendIntervalInMs;
+        if (objectTracker[uuid].config.intervalSec !== undefined) {
+            interval = objectTracker[uuid].config.intervalSec * 1000;
+            
+            // do not send old values when interval = 0
+            if (interval == 0) continue;
+        }
+        if (objectTracker[uuid].lastSeen + interval < Date.now()) {
             objectTracker[uuid].lastSeen = Date.now();
             sendToInflux(uuid, objectTracker[uuid].lastValue, "old");
         }
@@ -124,9 +131,9 @@ function sendToInflux(uuid, value, source) {
     writeData.tags["src"] = source;
     writeData.fields = { "value" : value }
     log_debug(source + ' - ' + writeData.measurement + ', ' + getTags(writeData.tags) + ', value: ' + value);
-    influxdb.writePoints([ writeData ]).catch(err => {
-    	log_error(`Error saving data to InfluxDB! ${err.stack}`)
-    });
+    //influxdb.writePoints([ writeData ]).catch(err => {
+    //	log_error(`Error saving data to InfluxDB! ${err.stack}`)
+    //});
 }
 
 lox.on('connect', function() {
