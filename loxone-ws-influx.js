@@ -84,7 +84,7 @@ function getExponentialFallbackDelay(retryCount) {
 function retryConnect() {
     retryCount++;
     var delayInMilliseconds = getExponentialFallbackDelay(retryCount);
-    log_info('Sleeping for ' + delayInMilliseconds + ' milliseconds before retrying...');
+    log_info('Sleeping for ' + delayInMilliseconds + ' milliseconds before retrying...' + retryCount);
     setTimeout(function () { lox.connect(); }, delayInMilliseconds);
 }
 
@@ -131,14 +131,13 @@ function sendToInflux(uuid, value, source) {
     writeData.tags["src"] = source;
     writeData.fields = { "value" : value }
     log_debug(source + ' - ' + writeData.measurement + ', ' + getTags(writeData.tags) + ', value: ' + value);
-    //influxdb.writePoints([ writeData ]).catch(err => {
-    //	log_error(`Error saving data to InfluxDB! ${err.stack}`)
-    //});
+    influxdb.writePoints([ writeData ]).catch(err => {
+    	log_error(`Error saving data to InfluxDB! ${err.stack}`)
+    });
 }
 
 lox.on('connect', function() {
     log_info("Loxone connected!");
-    retryCount = 0;
 });
 
 lox.on('close', function() {
@@ -176,6 +175,7 @@ lox.on('auth_failed', function(error) {
 });
 
 lox.on('authorized', function() {
+    retryCount = 0;
     log_info('Loxone authorized');
     setTimeout(function() { lox.send_command('jdev/cfg/version') }, 5000);
     interval = setInterval(function() { sendOldValues() }, 10000);
