@@ -1,34 +1,7 @@
 //
 // Original Author: R.A.Rainton <robin@rainton.com>
 //
-// Simple script to import Loxone stats into Influx DB.
-//
-// Most of this is shamelessly copied from Alladdin's test harness:
-// https://github.com/alladdin/node-lox-ws-api-testing
-//
-// Config file is JSON format, something like...
-// Get the Loxone UUIDs from the stat filenames, web interface, etc.
-// 
-//{
-//	"loxone" : {
-//		"host": "your.loxone.miniserver",
-//		"username": "someusername",
-//		"password": "somepasword"
-//	},
-//	
-//	"influxdb" : {
-//		"host": "your.influxdb.host",
-//		"database": "yourdb"
-//	},
-//	
-//	"uuids" : {
-//		"1234abcd-037d-9763-ffffffee1234abcd": {"measurement": "temperature", "tags": {"room": "Kitchen"} },
-//		"1234abcd-005f-8965-ffffffee1234abcd": {"measurement": "humidity", "tags": {"room": "Kitchen"} },
-//		"1234abcd-0052-0f08-ffffffee1234abcd": {"measurement": "AnythingYouLike", "tags": {"lots": "OfTags", "AsMany": "AsYouLike"} }
-//	}
-//}
-//
-// This code automatically adds the tags, 'uuid' and 'src' to all values.
+// Based on the work of https://github.com/raintonr/loxone-stats-influx 
 //
 
 const config = require("config");
