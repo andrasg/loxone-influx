@@ -1,7 +1,7 @@
 {
 	"loxone" : {
 		"host": "192.168.20.244",
-		"username": "andrasg",
+		"username": "influx",
 		"password": ""
 	},
 	
@@ -84,6 +84,8 @@
 		"12beaead-02bf-a1f7-ffff796b564594c0": {"measurement": "electricityConsumer", "tags": { "name": "livingroomAC" }},
 		"1329a5e8-0315-8b49-ffff796b564594c0": {"measurement": "electricityConsumer", "tags": { "name": "ufhpump" }},
 		"12beadf4-034a-76f8-ffff796b564594c0": {"measurement": "electricityConsumer", "tags": { "name": "hob" }},
+		"1334dab0-0377-634c-ffff796b564594c0": {"measurement": "electricityConsumer", "tags": { "name": "microwave" }},
+		"1334da6a-0305-1c32-ffff796b564594c0": {"measurement": "electricityConsumer", "tags": { "name": "oven" }},
 		"120f23ad-02cd-14ea-ffff796b564594c0": {"measurement": "contactSensor", "tags": { "room": "bedroomWindow" }, "intervalSec": 60 },
 		"120f23ad-02cd-14ed-ffff796b564594c0": {"measurement": "contactSensor", "tags": { "room": "entryDoor" }, "intervalSec": 60 },
 		"120f23ad-02cd-14f0-ffff796b564594c0": {"measurement": "contactSensor", "tags": { "room": "livingroomSlidingDoor" }, "intervalSec": 60 },
@@ -97,6 +99,10 @@
 		"1307499b-0313-b527-ffff796b564594c0": {"measurement": "airq", "tags": { "name": "sensor1vdd" }, "intervalSec": 0 },
 		"13074a37-02fe-d8ff-ffff796b564594c0": {"measurement": "airq", "tags": { "name": "sensor2vdd" }, "intervalSec": 0 },
 		"130c135d-0086-90be-ffff796b564594c0": {"measurement": "airq", "tags": { "room": "bebu1" }, "intervalSec": 0 },	
-		"130c135f-00d4-b51a-ffff796b564594c0": {"measurement": "airq", "tags": { "room": "bedroom" }, "intervalSec": 0 }	
+		"130c135f-00d4-b51a-ffff796b564594c0": {"measurement": "airq", "tags": { "room": "bedroom" }, "intervalSec": 0 },
+		"1368dc96-0261-2505-ffff796b564594c0": {"measurement": "heatingpressure", "tags": {  }},
+		"1368e819-0209-6eba-ffff796b564594c0": {"measurement": "heatingperformance", "tags": {  }},
+		"1369d71d-02a6-87bf-ffff796b564594c0": {"measurement": "burnerstatus", "tags": {  }},
+		"1369d71d-01ea-af9a-ffff796b564594c0": {"measurement": "boilerstatus", "tags": {  }}
 	}
 }
