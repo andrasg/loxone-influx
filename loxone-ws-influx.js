@@ -1,10 +1,13 @@
 //
 // Original Author: R.A.Rainton <robin@rainton.com>
 //
+// Simple script to import Loxone stats into Influx DB.
+//
 // Based on the work of https://github.com/raintonr/loxone-stats-influx 
 //
 
-const config = require("config");
+var config = require("config");
+const fs = require("fs");
 
 var LoxoneAPI = require('node-lox-ws-api');
 var lox = new LoxoneAPI(config.loxone.host, config.loxone.username, config.loxone.password, true, 'AES-256-CBC' /*'Hash'*/);
@@ -18,6 +21,7 @@ const influxdb = new Influx.InfluxDB({
 var debug = false;
 var interval;
 var retryCount = 0;
+var configfile = "./config/default.json";
 const maxRetryDelayInMs = config.intervals.maxRetryDelayInSec * 1000;
 const periodicSendIntervalInMs = config.intervals.periodicSendIntervalInSec * 1000;
 var objectTracker = { };
@@ -105,7 +109,7 @@ function sendToInflux(uuid, value, source) {
     writeData.fields = { "value" : value }
     log_debug(source + ' - ' + writeData.measurement + ', ' + getTags(writeData.tags) + ', value: ' + value);
     influxdb.writePoints([ writeData ]).catch(err => {
-    	log_error(`Error saving data to InfluxDB! ${err.stack}`)
+    	log_error(`Error saving data to InfluxDB! ${err.stack}`);
     });
 }
 
@@ -169,5 +173,18 @@ lox.on('update_event_value', function(uuid, evt) {
 process.on('SIGINT', function () {
     lox.abort();
 });
+
+// wire up config auto reload
+if (config.autoreloaduuids) {
+    log_info("Startring to watch for changes in '" + configfile + "'")
+    fs.watchFile(configfile, (curr, prev) => {
+        log_info("Config file changed, reloading config");
+
+        delete require.cache[require.resolve('config')];
+        config = require('config');
+
+        log_info("Done reloading config");
+    });
+}
 
 lox.connect();

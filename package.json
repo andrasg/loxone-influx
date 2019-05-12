@@ -6,17 +6,16 @@
 	"dependencies": {
 		"node-lox-ws-api": ">=0.4.3",
 		"config": "*",
-		"influx": "*"
+		"influx": "*",
+		"fs": "*"
 	},
-	"devDependencies": {
-		"@types/node": "^10.12.9"
-	},
+	"devDependencies": {},
 	"scripts": {
 		"start": "node loxone-ws-influx.js"
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/raintonr/loxone-stats-influx"
+		"url": "https://github.com/andrasg/loxone-influx"
 	},
 	"author": "Robin Rainton <robin@rainton.com>",
 	"license": "Apache-2.0"
