@@ -32,7 +32,7 @@
 		"12a7d0e2-0136-8898-ffff796b564594c0": {"measurement": "temp", "tags": { "room": "Pantry" }, "intervalSec": 0 },
 		"130719ec-02ed-79b8-ffff796b564594c0": {"measurement": "temp", "tags": { "room": "BedroomA" }, "intervalSec": 0 },		
 		"12569922-033c-70f6-ffff796b564594c0": {"measurement": "heatingtemp", "tags": { "type": "BoilerExpected" }, "intervalSec": 0 },
-		"124ebf71-01c3-c89d-ffff796b564594c0": {"measurement": "heatingtemp", "tags": { "type": "RadiatorExpected" }, "intervalSec": 0 },
+		"124ebf71-01c3-c89d-ffff796b564594c0": {"measurement": "heatingtemp", "tags": { "type": "RadiatorExpected" }, "intervalSec": 600 },
 		"1231a42e-0390-838a-ffff796b564594c0": {"measurement": "heatingtemp", "tags": { "type": "RadiatorForward" }, "intervalSec": 0 },
 		"1231a8ba-0183-3165-ffff796b564594c0": {"measurement": "heatingtemp", "tags": { "type": "RadiatorBack" }, "intervalSec": 0 },
 		"1231aab3-007a-6d31-ffff796b564594c0": {"measurement": "heatingtemp", "tags": { "type": "BoilerForward" }, "intervalSec": 0 },
@@ -41,9 +41,15 @@
 		"12319f79-026e-4d2b-ffff796b564594c0": {"measurement": "heatingtemp", "tags": { "type": "UFHForward" }, "intervalSec": 0 },
 		"1231a7a2-01b1-0f0a-ffff796b564594c0": {"measurement": "heatingtemp", "tags": { "type": "UFHBack" }, "intervalSec": 0 },
 		"13045982-0178-ad4a-ffff796b564594c0": {"measurement": "hotwatertemp", "tags": { "type": "HotWaterTank" }, "intervalSec": 0 },
+		"137f4c53-0013-6324-ffff796b564594c0": {"measurement": "hotwatertemp", "tags": { "type": "HotWaterTankInternal" }},
+		"137f4b00-036c-8cd8-ffff796b564594c0": {"measurement": "heatingtemp", "tags": { "type": "return_temp" }, "intervalSec": 0 },
+		"137f4b06-021f-dff7-ffff796b564594c0": {"measurement": "heatingtemp", "tags": { "type": "ruecklauf_ist" }, "intervalSec": 0 },
+		"137f4b03-004d-b666-ffff796b564594c0": {"measurement": "heatingtemp", "tags": { "type": "vorlauf_ist" }, "intervalSec": 0 },
+		"137f4c86-001c-878f-ffff796b564594c0": {"measurement": "heatingtemp", "tags": { "type": "burner_temp" }, "intervalSec": 0 },		
 		"122c6fd0-0056-abde-ffff796b564594c0": {"measurement": "heating", "tags": { "type": "pump", "name": "UFH pump" }},
 		"120f23ad-02dd-152b-ffff796b564594c0": {"measurement": "heating", "tags": { "type": "pump", "name": "Radiator pump" }},
 		"1291525c-022a-b722-ffff796b564594c0": {"measurement": "heating", "tags": { "type": "pump", "name": "ITC Radiator pump" }},
+		"137f4c6e-007a-e0a5-ffff796b564594c0": {"measurement": "ventilatorperformance", "tags": {  }},
 		"124e8506-0057-9930-ffff796b564594c0": {"measurement": "valve", "tags": { "room": "Bebu1" }},
 		"12e39164-010e-7a41-ffff796b564594c0": {"measurement": "valve", "tags": { "room": "Bebu1H1" }},
 		"124e8564-0257-6578-ffff796b564594c0": {"measurement": "valve", "tags": { "room": "Bebu2" }},
@@ -95,7 +101,8 @@
 		"120f23ad-02cd-14f6-ffff796b564594c0": {"measurement": "contactSensor", "tags": { "room": "livingroomFireplaceWindow" }},
 		"120f23ad-02cd-14fc-ffff796b564594c0": {"measurement": "contactSensor", "tags": { "room": "bebu2Window" }},
 		"120f23ad-02cd-14ff-ffff796b564594c0": {"measurement": "contactSensor", "tags": { "room": "studyWindow" }},
-		"13076118-0117-2004-ffff796b564594c0": {"measurement": "light", "tags": { "name": "balcony" }, "intervalSec": 0 },
+		"13076118-0117-2004-ffff796b564594c0": {"measurement": "light", "tags": { "name": "balcony" }},
+		"12aa91dc-00f8-3137-ffff796b564594c0": {"measurement": "light", "tags": { "name": "livingroommoodauto" }},
 		"1307499b-0322-b52b-ffff796b564594c0": {"measurement": "airq", "tags": { "name": "sensor1vad" }, "intervalSec": 0 },
 		"13074a37-030d-d903-ffff796b564594c0": {"measurement": "airq", "tags": { "name": "sensor2vad" }, "intervalSec": 0 },		
 		"1307499b-0313-b527-ffff796b564594c0": {"measurement": "airq", "tags": { "name": "sensor1vdd" }, "intervalSec": 0 },
@@ -112,6 +119,12 @@
 		"12156d3d-036e-4eb6-ffff8b19126a09e7": {"measurement": "shadeposition", "tags": { "name": "study" }},
 		"12136a30-02e5-77bd-ffff2fc8f0d48506": {"measurement": "shadeposition", "tags": { "name": "livingroomFireplace" }},
 		"12136b72-0397-a8eb-ffffea38b92a6d92": {"measurement": "shadeposition", "tags": { "name": "livingroomSliding" }},
-		"12136b6d-01b2-a147-ffffbb26602e80c8": {"measurement": "shadeposition", "tags": { "name": "livingroomBalcony" }}	
+		"12136b6d-01b2-a147-ffffbb26602e80c8": {"measurement": "shadeposition", "tags": { "name": "livingroomBalcony" }},
+		"11ed772e-02e6-5204-ffff796b564594c0": {"measurement": "switch", "tags": { "name": "bathroomleft", "room": "Bathroom" }, "intervalSec": 0 },
+		"13a7eb5b-0222-a886-ffff796b564594c0": {"measurement": "sundirection", "tags": { }},
+		"13a8ba82-00b3-99a5-ffff796b564594c0": {"measurement": "geolocation", "tags": { "name": "somebodyarrives" }},
+		"13ba328e-00b6-9c95-ffff796b564594c0": {"measurement": "ac", "tags": { "name": "bedroom" }},
+		"13ba3293-0115-cb63-ffff796b564594c0": {"measurement": "ac", "tags": { "name": "livingroom" }}
+	
 	}
 }
