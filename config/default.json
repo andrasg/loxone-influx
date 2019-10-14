@@ -31,13 +31,13 @@
 		"125653f8-000d-e24b-ffff796b564594c0": {"measurement": "temp", "tags": { "room": "Livingroom" }, "intervalSec": 0 },
 		"12a7d0e2-0136-8898-ffff796b564594c0": {"measurement": "temp", "tags": { "room": "Pantry" }, "intervalSec": 0 },
 		"130719ec-02ed-79b8-ffff796b564594c0": {"measurement": "temp", "tags": { "room": "BedroomA" }, "intervalSec": 0 },		
-		"12569922-033c-70f6-ffff796b564594c0": {"measurement": "heatingtemp", "tags": { "type": "BoilerExpected" }, "intervalSec": 0 },
+		"12569922-033c-70f6-ffff796b564594c0": {"measurement": "heatingtemp", "tags": { "type": "BoilerExpected" }, "intervalSec": 600 },
 		"124ebf71-01c3-c89d-ffff796b564594c0": {"measurement": "heatingtemp", "tags": { "type": "RadiatorExpected" }, "intervalSec": 600 },
 		"1231a42e-0390-838a-ffff796b564594c0": {"measurement": "heatingtemp", "tags": { "type": "RadiatorForward" }, "intervalSec": 0 },
 		"1231a8ba-0183-3165-ffff796b564594c0": {"measurement": "heatingtemp", "tags": { "type": "RadiatorBack" }, "intervalSec": 0 },
 		"1231aab3-007a-6d31-ffff796b564594c0": {"measurement": "heatingtemp", "tags": { "type": "BoilerForward" }, "intervalSec": 0 },
 		"1231a993-0387-3e79-ffff796b564594c0": {"measurement": "heatingtemp", "tags": { "type": "BoilerBack" }, "intervalSec": 0 },
-		"124ebf76-00d8-d91d-ffff796b564594c0": {"measurement": "heatingtemp", "tags": { "type": "UFHExpected" }, "intervalSec": 0 },
+		"124ebf76-00d8-d91d-ffff796b564594c0": {"measurement": "heatingtemp", "tags": { "type": "UFHExpected" }, "intervalSec": 600 },
 		"12319f79-026e-4d2b-ffff796b564594c0": {"measurement": "heatingtemp", "tags": { "type": "UFHForward" }, "intervalSec": 0 },
 		"1231a7a2-01b1-0f0a-ffff796b564594c0": {"measurement": "heatingtemp", "tags": { "type": "UFHBack" }, "intervalSec": 0 },
 		"13045982-0178-ad4a-ffff796b564594c0": {"measurement": "hotwatertemp", "tags": { "type": "HotWaterTank" }, "intervalSec": 0 },
@@ -57,6 +57,7 @@
 		"124d71ff-0022-9034-ffff796b564594c0": {"measurement": "valve", "tags": { "room": "LivingRoom" }},
 		"124e8599-0021-1263-ffff796b564594c0": {"measurement": "valve", "tags": { "room": "Bedroom" }},
 		"12e39773-012e-0368-ffff796b564594c0": {"measurement": "valve", "tags": { "room": "BedroomH1" }},
+		"1442fcad-038a-d5f0-ffff796b564594c0": {"measurement": "valve", "tags": { "room": "LivingRoomUFH" }},
 		"12a91281-026d-7199-ffff796b564594c0": {"measurement": "valve", "tags": { "room": "StudyCalculated", "type": "calculated" }},
 		"12bd316b-0297-bf45-ffff796b564594c0": {"measurement": "valve", "tags": { "room": "LivingroomCalculated", "type": "calculated" }},
 		"12bd4349-0189-d651-ffff796b564594c0": {"measurement": "valve", "tags": { "room": "Bebu1Calculated", "type": "calculated" }},
@@ -112,7 +113,6 @@
 		"1368dc96-0261-2505-ffff796b564594c0": {"measurement": "heatingpressure", "tags": {  }},
 		"1368e819-0209-6eba-ffff796b564594c0": {"measurement": "heatingperformance", "tags": {  }},
 		"1369d71d-02a6-87bf-ffff796b564594c0": {"measurement": "burnerstatus", "tags": {  }},
-		"1369d71d-01ea-af9a-ffff796b564594c0": {"measurement": "boilerstatus", "tags": {  }},
 		"12156d42-014c-5cb5-ffff7413b6b7a402": {"measurement": "shadeposition", "tags": { "name": "bebu1" }},
 		"12156d43-0031-63fb-ffff57fc7d1d855e": {"measurement": "shadeposition", "tags": { "name": "bebu2" }},
 		"12156d40-0163-559e-ffff3bd3db04ba39": {"measurement": "shadeposition", "tags": { "name": "bedroom" }},
@@ -124,7 +124,11 @@
 		"13a7eb5b-0222-a886-ffff796b564594c0": {"measurement": "sundirection", "tags": { }},
 		"13a8ba82-00b3-99a5-ffff796b564594c0": {"measurement": "geolocation", "tags": { "name": "somebodyarrives" }},
 		"13ba328e-00b6-9c95-ffff796b564594c0": {"measurement": "ac", "tags": { "name": "bedroom" }},
-		"13ba3293-0115-cb63-ffff796b564594c0": {"measurement": "ac", "tags": { "name": "livingroom" }}
-	
+		"13ba3293-0115-cb63-ffff796b564594c0": {"measurement": "ac", "tags": { "name": "livingroom" }},
+		"1250eb70-00dd-4c25-ffff796b564594c0": {"measurement": "targettemp", "tags": { "room": "bebu1"}},
+		"1250eb84-02f0-7e38-ffff796b564594c0": {"measurement": "targettemp", "tags": { "room": "bebu2"}},
+		"12513d76-0320-4ec3-ffff796b564594c0": {"measurement": "targettemp", "tags": { "room": "bedroom"}},
+		"1250ebaa-0234-b064-ffff796b564594c0": {"measurement": "targettemp", "tags": { "room": "study"}},
+		"12513edf-00b4-21e9-ffff796b564594c0": {"measurement": "targettemp", "tags": { "room": "livingroom"}}	
 	}
 }
