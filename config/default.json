@@ -130,6 +130,7 @@
 		"1250eb84-02f0-7e38-ffff796b564594c0": {"measurement": "targettemp", "tags": { "room": "bebu2"}},
 		"12513d76-0320-4ec3-ffff796b564594c0": {"measurement": "targettemp", "tags": { "room": "bedroom"}},
 		"1250ebaa-0234-b064-ffff796b564594c0": {"measurement": "targettemp", "tags": { "room": "study"}},
-		"12513edf-00b4-21e9-ffff796b564594c0": {"measurement": "targettemp", "tags": { "room": "livingroom"}}
+		"12513edf-00b4-21e9-ffff796b564594c0": {"measurement": "targettemp", "tags": { "room": "livingroom"}},
+		"14fabdd4-002b-965b-ffff796b564594c0": {"measurement": "loxonecpu", "tags": {}}
 	}
 }
