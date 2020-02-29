@@ -6,8 +6,8 @@
 	},
 	
 	"influxdb" : {
-		"host": "192.168.20.6:8086",
-		"database": "loxone"
+		"host": "192.168.20.6",
+		"database": "loxone2"
 	},
 
 	"intervals": {
@@ -120,7 +120,7 @@
 		"12136a30-02e5-77bd-ffff2fc8f0d48506": {"measurement": "shadeposition", "tags": { "name": "livingroomFireplace" }},
 		"12136b72-0397-a8eb-ffffea38b92a6d92": {"measurement": "shadeposition", "tags": { "name": "livingroomSliding" }},
 		"12136b6d-01b2-a147-ffffbb26602e80c8": {"measurement": "shadeposition", "tags": { "name": "livingroomBalcony" }},
-		"11ed772e-02e6-5204-ffff796b564594c0": {"measurement": "switch", "tags": { "name": "bathroomleft", "room": "Bathroom" }, "intervalSec": 0 },
+		"11ed772e-02e6-5204-ffff796b564594c0": {"measurement": "switch", "tags": { "name": "bathroomlef", "room": "Bathroom" }, "intervalSec": 0 },
 		"14a8ed5d-01d2-776f-ffff796b564594c0": {"measurement": "switch", "tags": { "name": "bathroomleft2", "room": "Bathroom" }, "intervalSec": 0 },
 		"13a7eb5b-0222-a886-ffff796b564594c0": {"measurement": "sundirection", "tags": { }},
 		"13a8ba82-00b3-99a5-ffff796b564594c0": {"measurement": "geolocation", "tags": { "name": "somebodyarrives" }},
