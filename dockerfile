@@ -7,6 +7,7 @@ COPY package*.json /app/
 RUN npm install
 
 COPY src/**/*.ts /app/src/
+COPY tsconfig.json /app/
 RUN npm run tsc
 
 COPY dist/**/*.js /app/
