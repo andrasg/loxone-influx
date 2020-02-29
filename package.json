@@ -14,7 +14,7 @@
 		"@types/node": "^13.7.7"
 	},
 	"scripts": {
-		"start": "node loxone-ws-influx.js"
+		"start": "node dist/loxone-ws-influx.js"
 	},
 	"repository": {
 		"type": "git",
