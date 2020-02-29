@@ -1,13 +1,12 @@
 FROM node:8
 
+RUN apk add tzdata
+
 WORKDIR /usr/src/app
 
 COPY package.json .
 RUN npm install
-
+RUN apt-get install tzdata
 COPY . .
-
-RUN groupadd -r nodejs && useradd -m -r -g nodejs nodejs
-USER nodejs
 
 CMD [ "node", "loxone-ws-influx.js" ]
