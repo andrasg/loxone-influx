@@ -6,10 +6,10 @@ WORKDIR /app
 COPY package*.json /app/
 RUN npm install
 
-COPY src/**/*.ts /app/src/
+COPY src/ /app/src/
 COPY tsconfig.json /app/
 RUN npm run tsc
 
-COPY dist/**/*.js /app/
+COPY dist/ /app/
 
 CMD [ "node", "/app/loxone-ws-influx.js" ]
