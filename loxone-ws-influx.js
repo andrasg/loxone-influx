@@ -27,16 +27,16 @@ const periodicSendIntervalInMs = config.intervals.periodicSendIntervalInSec * 10
 var objectTracker = { };
 
 function log_error(message) {
-    console.log((new Date().toISOString())+' ERROR : '+message);
+    console.log((new Date().toString())+' ERROR : '+message);
 }
 
 function log_info(message) {
-    console.log((new Date().toISOString())+' INFO : '+message);
+    console.log((new Date().toString())+' INFO : '+message);
 }
 
 function log_debug(message) {
     if (debug){
-        console.log((new Date().toISOString())+' DEBUG: '+message);
+        console.log((new Date().toString())+' DEBUG: '+message);
     }
 }
 
