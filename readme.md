@@ -34,16 +34,20 @@ The configuration items under the `uuids` node need to have the following format
         "tags": {
             "any": "tag",
             "tag2": "value2"
-        },
-        "intervalSec": 0
+        }
     }
 }
 ```
 
-The setting `intervalSec` is optional. The script will preiodically (default: 600 seconds configured in `default.json`) send the last received value to influx even if there was no update received from Loxone. This function can be disabled by setting `intervalSec` to `0`.
+### Creating ACR task
 
-### Configuration reload
-
-The script watches the `.\config\default.json` file and in case of changes, it reads config again.
-
-> Due to the way the script is setup, only changes in the `uuids` section are respected by the reload, other config changes, such as connection info are not applied.
+```
+az acr task create \
+     --registry andrasg \
+     --name loxone-influx \
+     --image loxone-influx:latest \
+     --context https://github.com/andrasg/loxone-influx.git \
+     --file dockerfile \
+     --git-access-token <PAT> \
+     --platform linux/arm/v7
+```

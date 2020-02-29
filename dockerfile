@@ -10,6 +10,4 @@ COPY src/ /app/src/
 COPY tsconfig.json /app/
 RUN npm run tsc
 
-COPY dist/ /app/
-
-CMD [ "node", "/app/loxone-ws-influx.js" ]
+CMD [ "node", "start" ]
