@@ -4,10 +4,9 @@
 	"description": "Import Loxone data gathered via WS into InfluxDB",
 	"main": "loxone-ws-influx.js",
 	"dependencies": {
-		"node-lox-ws-api": ">=0.4.3",
+		"node-lox-ws-api": "^0.4.5",
 		"config": "*",
-		"influx": "*",
-		"fs": "*"
+		"influx": "*"
 	},
 	"devDependencies": {
 		"@types/config": "0.0.36",

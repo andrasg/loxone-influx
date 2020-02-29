@@ -3,6 +3,7 @@ import LoxoneAPI = require('node-lox-ws-api');
 import { Logger } from "./Logger";
 import { EventEmitter } from "events";
 import { emit } from "cluster";
+import { LoxoneUpdateEvent } from "./data/LoxoneUpdateEvent";
 
 class LoxoneConnection extends EventEmitter {
 
@@ -49,40 +50,35 @@ class LoxoneConnection extends EventEmitter {
             Logger.log_info('Loxone connect failed!');
         });
         
-        this.loxoneAPI.on('connection_error', this.handleConnectionError);
+        this.loxoneAPI.on('connection_error', function(error) {
+            emit("connection_error");
+            if (error != undefined) {
+                Logger.log_info('Loxone connection error: ' + error.toString());
+            }
+            else {
+                Logger.log_info('Loxone connection error');
+            }
+            that.retryConnect();    
+        });
         
         this.loxoneAPI.on('auth_failed', function(error) {
             Logger.log_info('Loxone auth error: ' + JSON.stringify(error));
         });
         
-        this.loxoneAPI.on('authorized', this.handleAuthorized);
+        this.loxoneAPI.on('authorized', function() {
+            emit("authorized");
+            that.retryCount = 0;
+            Logger.log_info('Loxone authorized');
+            setTimeout(function() { that.loxoneAPI.send_command('jdev/cfg/version') }, 5000);    
+        });
         
         this.loxoneAPI.on('update_event_value', function(uuid, evt) {
-            that.emit("update", uuid, evt);
+            that.emit("update", new LoxoneUpdateEvent(uuid, evt));
         });
         
         process.on('SIGINT', function () {
-            this.loxoneAPI.abort();
+            that.loxoneAPI.abort();
         });
-        
-    }
-
-    private handleAuthorized() {
-        emit("authorized");
-        this.retryCount = 0;
-        Logger.log_info('Loxone authorized');
-        setTimeout(function() { this.loxoneAPI.send_command('jdev/cfg/version') }, 5000);
-    }
-
-    private handleConnectionError(error) {
-        emit("connection_error");
-        if (error != undefined) {
-            Logger.log_info('Loxone connection error: ' + error.toString());
-        }
-        else {
-            Logger.log_info('Loxone connection error');
-        }
-        this.retryConnect();
     }
 
     private retryConnect() {

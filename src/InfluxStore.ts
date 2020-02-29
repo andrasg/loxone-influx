@@ -1,5 +1,6 @@
 import Influx = require('influx');
 import { IConfig } from "config";
+import { LoxoneUpdateEvent } from './data/LoxoneUpdateEvent';
 
 class InfluxStore {
     private db: Influx.InfluxDB;
@@ -10,27 +11,15 @@ class InfluxStore {
         this.db = new Influx.InfluxDB({
             host: this.config.get('influxdb.host'),
             database: this.config.get('influxdb.database')
-        });
-        
+        });   
     }
 
-    private getdataPointForUuid(uuid: string):any {
-        var writeData = JSON.parse(JSON.stringify(this.config.get('uuids')[uuid])); // clone object
-        writeData.tags["uuid"] = uuid;
-
-        return writeData;
-    }
-
-    sendToInflux(uuid: string, value: number, source: string):void {
-        var writeData = this.getdataPointForUuid(uuid);
-
-        writeData.tags["src"] = source;
-        writeData.fields = { "value" : value }
-
-        //log_debug(source + ' - ' + writeData.measurement + ', ' + getTags(writeData.tags) + ', value: ' + value);
-        this.db.writePoints([ writeData ]).catch(err => {
-            //log_error(`Error saving data to InfluxDB! ${err.stack}`);
-        });
+    sendLoxoneUpdateEventToInflux(loxoneEvent: LoxoneUpdateEvent) {
+        var point:Influx.IPoint = loxoneEvent.asIPoint();
+        return this.db.writePoints([ point ], {
+            database: this.config.get('influxdb.database'),
+            precision: 'ms',
+          });
     }
 }
 

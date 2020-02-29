@@ -6,8 +6,8 @@
 	},
 	
 	"influxdb" : {
-		"host": "192.168.20.6:8086",
-		"database": "loxone"
+		"host": "192.168.20.6",
+		"database": "loxone2"
 	},
 
 	"intervals": {
