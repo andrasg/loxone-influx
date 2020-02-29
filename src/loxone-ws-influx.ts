@@ -4,7 +4,6 @@
 //
 
 import config = require("config");
-config.util.loadFileConfigs('../config');
 
 import { InfluxStore } from "./InfluxStore";
 import { LoxoneConnection } from "./LoxoneConnection";
@@ -15,6 +14,7 @@ import { Utils } from "./Utils";
 var influxStore: InfluxStore = new InfluxStore(config);
 var loxoneConnection: LoxoneConnection = new LoxoneConnection(config);
 var uuidMappings: any = Utils.readUUIDMappings(config);
+var configfile = './config/default.json'
 
 //Logger.setDebug(true);
 

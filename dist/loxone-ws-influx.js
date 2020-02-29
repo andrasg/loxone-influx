@@ -5,7 +5,6 @@
 //
 Object.defineProperty(exports, "__esModule", { value: true });
 const config = require("config");
-config.util.loadFileConfigs('../config');
 const InfluxStore_1 = require("./InfluxStore");
 const LoxoneConnection_1 = require("./LoxoneConnection");
 const Logger_1 = require("./Logger");
@@ -13,6 +12,7 @@ const Utils_1 = require("./Utils");
 var influxStore = new InfluxStore_1.InfluxStore(config);
 var loxoneConnection = new LoxoneConnection_1.LoxoneConnection(config);
 var uuidMappings = Utils_1.Utils.readUUIDMappings(config);
+var configfile = './config/default.json';
 //Logger.setDebug(true);
 loxoneConnection.on("update", function (event) {
     if (event.uuid in uuidMappings) {
