@@ -6,7 +6,8 @@
 	"dependencies": {
 		"node-lox-ws-api": "^0.4.5",
 		"config": "*",
-		"influx": "*"
+		"influx": "*",
+		"typescript": "*"
 	},
 	"devDependencies": {
 		"@types/config": "0.0.36",
