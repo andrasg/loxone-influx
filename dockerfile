@@ -10,4 +10,4 @@ COPY src/ /app/src/
 COPY tsconfig.json /app/
 RUN npm run tsc
 
-CMD [ "node", "start" ]
+CMD [ "npm", "start" ]
