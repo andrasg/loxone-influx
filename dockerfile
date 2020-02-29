@@ -1,6 +1,9 @@
 FROM node:8
 
-RUN apt-get install tzdata
+ENV TZ 'Europe/Budapest'
+
+RUN cp /usr/share/zoneinfo/$TZ /etc/localtime
+RUN echo $TZ > /etc/timezone
 
 WORKDIR /usr/src/app
 
