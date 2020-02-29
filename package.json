@@ -1,6 +1,6 @@
 {
 	"name": "loxone-ws-influx",
-	"version": "0.0.1",
+	"version": "1.0.0",
 	"description": "Import Loxone data gathered via WS into InfluxDB",
 	"main": "loxone-ws-influx.js",
 	"dependencies": {
@@ -14,13 +14,13 @@
 		"@types/node": "^13.7.7"
 	},
 	"scripts": {
-		"tsc": "tsc -p tsconfig.json",
-		"start": "node dist/loxone-ws-influx.js"
+		"start": "node dist/loxone-ws-influx.js",
+		"tsc": "tsc -p tsconfig.json"
 	},
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/andrasg/loxone-influx"
 	},
-	"author": "Robin Rainton <robin@rainton.com>",
+	"author": "Andras Gaal <andras@gaal.eu>",
 	"license": "Apache-2.0"
 }
