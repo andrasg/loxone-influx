@@ -11,7 +11,8 @@
 	},
 	"devDependencies": {},
 	"scripts": {
-		"start": "node loxone-ws-influx.js"
+		"start": "node loxone-ws-influx.js",
+		"tsc": "tsc -p tsconfig.json"
 	},
 	"repository": {
 		"type": "git",
