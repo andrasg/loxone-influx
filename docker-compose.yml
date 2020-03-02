@@ -1,0 +1,13 @@
+version: '2.1'
+
+services:
+  loxone-influx:
+    image: loxone-influx
+    build: .
+    environment:
+      NODE_ENV: development
+    volumes:
+      - ./config:/app/config
+    ports:
+      - 9229:9229
+    command: npm run debug

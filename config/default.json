@@ -9,6 +9,10 @@
 		"host": "192.168.20.6",
 		"database": "loxone2"
 	},
+
+	"intervals": {
+		"maxRetryDelayInSec": 30
+	},
 	
 	"uuids" : {
 		"11ed772e-02ea-522d-ffff796b564594c0": {"measurement": "boilercontrol", "tags": { } },

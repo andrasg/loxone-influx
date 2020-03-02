@@ -8,11 +8,33 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}/dist/loxone-ws-influx.js",
-            "preLaunchTask": "tsc: build - tsconfig.json",
+            "program": "${workspaceFolder}/src/loxone-ws-influx.ts",
             "outFiles": [
                 "${workspaceFolder}/dist/**/*.js"
-            ]
+            ],
+            "env": {
+                "NODE_ENV": "development"
+            }
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch in Docker",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": [ "run", "docker-compose" ],
+            "port": 9229,
+            "restart": true,
+            "timeout": 60000,
+            "localRoot": "${workspaceFolder}/dist",
+            "remoteRoot": "/app/dist",
+            "outFiles": [
+              "${workspaceFolder}/dist/**/*.js"
+            ],
+            "skipFiles": [
+              "<node_internals>/**/*.js",
+            ],
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen"
         }
     ]
 }

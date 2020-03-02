@@ -15,7 +15,10 @@
 	},
 	"scripts": {
 		"start": "node dist/loxone-ws-influx.js",
-		"tsc": "tsc -p tsconfig.json"
+		"tsc": "tsc -p tsconfig.json",
+		"watch": "tsc -w -p tsconfig.json",
+		"docker-compose": "docker-compose up",
+		"debug": "node --inspect=0.0.0.0:9229 dist/loxone-ws-influx.js"
 	},
 	"repository": {
 		"type": "git",
