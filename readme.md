@@ -18,9 +18,7 @@ You can run the script directly, through node or install the scirpt as a Docker 
   - Your environment's UUID's
 - Create `local.json` in the `config` folder with:
   - Loxone password
-- run using `node loxone-ws-influx.js` or create a service from it using `service.js`.
-
-The file `local.json` is in `.gitignore` so it won't be added to source control.
+- run using `npm start`
 
 ### Running through Docker
 
@@ -53,6 +51,7 @@ UUID's can be easily obtained by opening your `*.Loxone` file and searching for 
 >NOTE: The Loxone WS API will only emit change updates for items that are configured as "Use" in the "User interface" section of the block's Loxone config.
 > To avoid clutter in the Loxone native mobile app, I am using a dedicated user for this script, so items that I need in Influx but don't want in the mobile app are assigned in Loxone Config to this user only.
 
+The file `local.json` is in `.gitignore` so it won't be added to source control to avoid checking in credentials.
 
 The configuration items under the `uuids` node need to have the following format:
 
@@ -70,11 +69,13 @@ The configuration items under the `uuids` node need to have the following format
 
 ## DevOps flow using Docker
 
-I am using an Azure Container Registry (ACR) to host my images. The following ACR task watches commits in this github repository, builds the docker image, and pushes the new image to the registry.
+I am using an Azure Container Registry (ACR) to host my images but this approach would be analogous when using other registries (eg: dockerhub) as well. The following ACR task watches commits in this github repository, builds the docker image, and pushes the new image to the registry.
 
 I am running [watchtower](https://containrrr.github.io/watchtower/) to make sure my container is using the latest image available in ACR.
 
 ### ACR task
+
+The following task watches this github repository, builds the docker image upon commit and pushes the new image to ACR with the `latest` tag.
 
 ```sh
 az acr task create \

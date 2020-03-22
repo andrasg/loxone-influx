@@ -1,4 +1,5 @@
 //
+// Author: Andras Gaal <andras@gaal.eu>
 // Original Author: R.A.Rainton <robin@rainton.com>
 // Initially based on the work of https://github.com/raintonr/loxone-stats-influx 
 //
