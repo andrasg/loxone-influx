@@ -22,14 +22,14 @@ var configfile = './config/default.json'
 loxoneConnection.on("update", function (event: LoxoneUpdateEvent) {
     if (event.uuid in uuidMappings) {
         event.mapping = uuidMappings[event.uuid];
-        Logger.log_info(event.mapping.measurement + ', ' + event.mapping.getTagsAsText() + ', value=' + event.value.toString());
+        Logger.log_info("--> IN " + event.mapping.measurement + ', ' + event.mapping.getTagsAsText() + ', value=' + event.value.toString());
         
         influxStore.sendLoxoneUpdateEventToInflux(event).catch(err => {
             Logger.log_error(`Error saving data to InfluxDB! ${err.stack}`);
         });
 
     } else {
-        Logger.log_debug('Ignoring event value: uuid='+event.uuid+', evt='+Utils.limit_str(event.value.toString(), 100)+'');
+        //Logger.log_debug('Ignoring event value: uuid='+event.uuid+', evt='+Utils.limit_str(event.value.toString(), 100)+'');
     }
 });
 

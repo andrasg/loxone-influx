@@ -19,7 +19,7 @@ class LoxoneConnection extends EventEmitter {
         let user = config.get('loxone.username');
         let password = config.get('loxone.password');
         this.loxoneAPI = new LoxoneAPI(host, user, password, true, 'AES-256-CBC' /*'Hash'*/);
-        this.maxRetryDelayInMs = config.get<number>('intervals.maxRetryDelayInSec') * 1000;
+        this.maxRetryDelayInMs = config.get<number>('loxone.maxRetryDelayInSec') * 1000;
 
         this.setupEvents();
     }
@@ -82,14 +82,17 @@ class LoxoneConnection extends EventEmitter {
     }
 
     private retryConnect() {
-        this.retryCount++;
+        if (this.retryCount < 10) {
+            this.retryCount++;
+        }
+        
         var delayInMilliseconds = this.getExponentialFallbackDelay(this.retryCount);
         Logger.log_info('Sleeping for ' + delayInMilliseconds + ' milliseconds before retrying...' + this.retryCount);
         setTimeout(function () { this.loxoneAPI.connect(); }, delayInMilliseconds);
     }
 
     private getExponentialFallbackDelay(retryCount: number): number {
-        var delayInMilliseconds = 0.5 * (Math.pow(2, retryCount) - 1) * 1000;
+        var delayInMilliseconds = 0.5 * Math.pow(2, retryCount) * 1000;
         if (delayInMilliseconds > this.maxRetryDelayInMs) {
             delayInMilliseconds = this.maxRetryDelayInMs;
         }

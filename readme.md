@@ -2,6 +2,8 @@
 
 This script listens for events on Loxone's websocket (WS) API and adds event data to Influx based on the config.
 
+The script has a buffer of `bufferSize` for regular events and for an additional `criticalBufferSize` for critical events (marked as such in the config). The buffer is used to store events in-memory, in case data cannot be sent to InfluxDb.
+
 The script is based on the script at: https://github.com/raintonr/loxone-stats-influx
 
 ## Usage
@@ -58,11 +60,12 @@ The configuration items under the `uuids` node need to have the following format
 ```json
 "uuids" : {
     "uuid-of-loxone-item": {
-        "measurement" : "influx measurement name",
+        "measurement": "influx measurement name",
         "tags": {
             "any": "tag",
             "tag2": "value2"
-        }
+        },
+        "critical": false
     }
 }
 ```

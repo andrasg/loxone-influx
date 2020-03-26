@@ -1,5 +1,6 @@
 "use strict";
 //
+// Author: Andras Gaal <andras@gaal.eu>
 // Original Author: R.A.Rainton <robin@rainton.com>
 // Initially based on the work of https://github.com/raintonr/loxone-stats-influx 
 //
@@ -17,13 +18,13 @@ var configfile = './config/default.json';
 loxoneConnection.on("update", function (event) {
     if (event.uuid in uuidMappings) {
         event.mapping = uuidMappings[event.uuid];
-        Logger_1.Logger.log_info(event.mapping.measurement + ', ' + event.mapping.getTagsAsText() + ', value=' + event.value.toString());
+        Logger_1.Logger.log_info("--> IN " + event.mapping.measurement + ', ' + event.mapping.getTagsAsText() + ', value=' + event.value.toString());
         influxStore.sendLoxoneUpdateEventToInflux(event).catch(err => {
             Logger_1.Logger.log_error(`Error saving data to InfluxDB! ${err.stack}`);
         });
     }
     else {
-        Logger_1.Logger.log_debug('Ignoring event value: uuid=' + event.uuid + ', evt=' + Utils_1.Utils.limit_str(event.value.toString(), 100) + '');
+        //Logger.log_debug('Ignoring event value: uuid='+event.uuid+', evt='+Utils.limit_str(event.value.toString(), 100)+'');
     }
 });
 loxoneConnection.connect();

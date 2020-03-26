@@ -3,6 +3,7 @@ class UUIDMapping {
     measurement: string;
     tags: { [name: string]: string; };
     intervalSec: any;
+    critical: boolean;
 
     getTagsAsText(): string {
         var message = "";
@@ -21,6 +22,7 @@ class UUIDMapping {
         mapping.measurement = inputObject.measurement;
         mapping.tags = inputObject.tags;
         mapping.intervalSec = inputObject.intervalSec;
+        mapping.critical = inputObject.critical || false;
 
         return mapping;
     }

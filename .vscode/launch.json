@@ -9,6 +9,7 @@
             "request": "launch",
             "name": "Launch Program",
             "program": "${workspaceFolder}/src/loxone-ws-influx.ts",
+            "preLaunchTask": "${defaultBuildTask}",
             "outFiles": [
                 "${workspaceFolder}/dist/**/*.js"
             ],
