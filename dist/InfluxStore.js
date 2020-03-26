@@ -16,10 +16,7 @@ class InfluxStore {
         this.inFlightRequests = 0;
         this.maxInFlightRequests = 3;
         this.config = config;
-        this.db = new Influx.InfluxDB({
-            host: this.config.get('influxdb.host'),
-            database: this.config.get('influxdb.database')
-        });
+        this.db = new Influx.InfluxDB(this.config.get('influxdb'));
         this.buffer = new Array();
         this.bufferSize = this.config.get("buffer.bufferSize");
         this.criticalBufferSize = this.config.get("buffer.bufferSize") + this.config.get("buffer.criticalBufferSize");

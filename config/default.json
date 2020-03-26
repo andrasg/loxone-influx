@@ -8,7 +8,10 @@
 	
 	"influxdb" : {
 		"host": "192.168.20.6",
-		"database": "loxone2"
+		"database": "loxone",
+		"pool": {
+			"requestTimeout": 5000
+		}
 	},
 
 	"buffer": {

@@ -15,10 +15,7 @@ class InfluxStore {
 
     constructor(config: IConfig) {
         this.config = config;
-        this.db = new Influx.InfluxDB({
-            host: this.config.get('influxdb.host'),
-            database: this.config.get('influxdb.database')
-        });   
+        this.db = new Influx.InfluxDB(this.config.get('influxdb'));   
         this.buffer = new Array<LoxoneUpdateEvent>();
         this.bufferSize = this.config.get<number>("buffer.bufferSize");
         this.criticalBufferSize = this.config.get<number>("buffer.bufferSize") + this.config.get<number>("buffer.criticalBufferSize")
