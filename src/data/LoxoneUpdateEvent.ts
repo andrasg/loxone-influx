@@ -1,5 +1,6 @@
 import { UUIDMapping } from "./UUIDMapping";
 import { IPoint } from "influx";
+import { StringDecoder } from "string_decoder";
 
 class LoxoneUpdateEvent {
 
@@ -7,6 +8,7 @@ class LoxoneUpdateEvent {
     value: number;
     mapping: UUIDMapping;
     date: Date;
+    src: string;
 
     constructor(uuid:string, evt: number) {
         this.uuid = uuid;
@@ -15,12 +17,18 @@ class LoxoneUpdateEvent {
     }
 
     asIPoint() : IPoint {
-        return {
+        let point:IPoint = {
             measurement: this.mapping.measurement,
-            tags: this.mapping.tags,
+            tags: JSON.parse(JSON.stringify(this.mapping.tags)),
             fields: { value: this.value },
             timestamp: this.date.getTime()
+        };
+
+        if (this.src) {
+            point.tags["src"] = this.src;
         }
+
+        return point;
     }
 }
 

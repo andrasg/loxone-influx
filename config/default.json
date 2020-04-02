@@ -74,7 +74,7 @@
 		"124e7057-005a-a3be-ffff796b564594c0": {"measurement": "humidity", "tags": { "room": "Outside" }, "intervalSec": 0 },
 		"12be8bab-0271-ff4f-ffff796b564594c0": {"measurement": "humidity", "tags": { "room": "Kitchen" }, "intervalSec": 0 },
 		"13071a7d-039f-3c0b-ffff796b564594c0": {"measurement": "humidity", "tags": { "room": "BedroomA" }, "intervalSec": 0 },
-		"125ddd63-0017-124a-ffff909e24312235": {"measurement": "mode", "tags": { "name": "EverybodyAway" }, "intervalSec": 60, "critical": true },
+		"125ddd63-0017-124a-ffff909e24312235": {"measurement": "mode", "tags": { "name": "EverybodyAway" }, "intervalSec": 600, "critical": true },
 		"1231ad36-0145-876d-ffff796b564594c0": {"measurement": "floortemp", "tags": { "location": "Couch" }, "intervalSec": 0 },
 		"1231adf5-031a-9491-ffff796b564594c0": {"measurement": "floortemp", "tags": { "location": "Kitchen" }, "intervalSec": 0 },
 		"1231aeba-00a9-a1b9-ffff796b564594c0": {"measurement": "floortemp", "tags": { "location": "Center" }, "intervalSec": 0 },

@@ -70,6 +70,7 @@ class InfluxStore {
     }
     sendLoxoneUpdateEventToInfluxInternal(loxoneEvent) {
         var point = loxoneEvent.asIPoint();
+        Logger_1.Logger.log_info("OUT -->   " + loxoneEvent.mapping.measurement + ', ' + loxoneEvent.mapping.getTagsAsText() + ', value=' + loxoneEvent.value.toString());
         return this.db.writePoints([point], {
             database: this.config.get('influxdb.database'),
             precision: 'ms',

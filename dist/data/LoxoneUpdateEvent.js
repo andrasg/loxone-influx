@@ -7,12 +7,16 @@ class LoxoneUpdateEvent {
         this.date = new Date();
     }
     asIPoint() {
-        return {
+        let point = {
             measurement: this.mapping.measurement,
-            tags: this.mapping.tags,
+            tags: JSON.parse(JSON.stringify(this.mapping.tags)),
             fields: { value: this.value },
             timestamp: this.date.getTime()
         };
+        if (this.src) {
+            point.tags["src"] = this.src;
+        }
+        return point;
     }
 }
 exports.LoxoneUpdateEvent = LoxoneUpdateEvent;

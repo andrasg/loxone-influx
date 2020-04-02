@@ -21,7 +21,7 @@ class UUIDMapping {
         mapping.uuid = uuid;
         mapping.measurement = inputObject.measurement;
         mapping.tags = inputObject.tags;
-        mapping.intervalSec = inputObject.intervalSec;
+        mapping.intervalSec = inputObject.intervalSec || 0;
         mapping.critical = inputObject.critical || false;
 
         return mapping;
