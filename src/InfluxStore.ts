@@ -83,7 +83,7 @@ class InfluxStore {
                 if (this.errorPresent) this.setErrorPresent(false);
             })
             .catch(reason => {
-                Logger.log_error("Cannot send point to Influx");
+                Logger.log_error("Cannot send point to Influx: " + reason);
                 if (!this.errorPresent) this.setErrorPresent(true);
                 this.buffer.push(loxoneEvent);
             })
