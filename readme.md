@@ -85,9 +85,10 @@ az acr task create \
      --registry andrasg \
      --name loxone-influx \
      --image loxone-influx:latest \
+     --image loxone-influx:$(date +%m%d%Y) \
      --context https://github.com/andrasg/loxone-influx.git \
      --file dockerfile \
      --git-access-token <PAT> \
      --base-image-trigger-enabled false \
-     --platform linux/arm/v7
+     --platform linux/arm64/v8
 ```
