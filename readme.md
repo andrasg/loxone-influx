@@ -70,6 +70,15 @@ The configuration items under the `uuids` node need to have the following format
 }
 ```
 
+## Local build
+
+Container targeting multiple platforms can be build using `buildx`. 
+
+```sh
+docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7 -t <repo>/loxone-influx:latest -t <repo>/loxone-influx:$(date +"%Y%m%d") --push --no-cache .
+```
+
+
 ## DevOps flow using Docker
 
 I am using an Azure Container Registry (ACR) to host my images but this approach would be analogous when using other registries (eg: dockerhub) as well. The following ACR task watches commits in this github repository, builds the docker image, and pushes the new image to the registry.
@@ -78,17 +87,29 @@ I am running [watchtower](https://containrrr.github.io/watchtower/) to make sure
 
 ### ACR task
 
-The following task watches this github repository, builds the docker image upon commit and pushes the new image to ACR with the `latest` tag.
+The following task watches this github repository, builds the docker image for `linux/arm64/v8` upon commit and pushes the new image to ACR with the `latest` and the current date as tags.
 
 ```sh
 az acr task create \
      --registry andrasg \
      --name loxone-influx \
      --image loxone-influx:latest \
-     --image loxone-influx:$(date +%m%d%Y) \
+     --image loxone-influx:$(date +%Y%m%d) \
      --context https://github.com/andrasg/loxone-influx.git \
      --file dockerfile \
      --git-access-token <PAT> \
      --base-image-trigger-enabled false \
      --platform linux/arm64/v8
+```
+
+The following task watches this github repository, builds the docker image using the file `acrtask.yml` upon commit and pushes the new image to ACR with the `latest` and the current date as tags.
+
+```sh
+az acr task create \
+    --registry andrasg \
+    --name loxone-influx \
+    --context https://github.com/andrasg/loxone-influx.git \
+    --file acrtask.yml \
+    --base-image-trigger-enabled false \
+    --git-access-token <PAT>
 ```
