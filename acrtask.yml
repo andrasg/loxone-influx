@@ -2,4 +2,4 @@ version: v1.1.0
 
 steps:
 - cmd: buildx create --use # start buildkit
-- cmd: buildx build -t {{.Run.Registry}}/loxone-influx2:latest -t {{.Run.Registry}}/loxone-influx2:$(date +"%Y%m%d") --platform linux/amd64,linux/arm64,linux/arm/v7 -f dockerfile --push .
+- cmd: buildx build -t {{.Run.Registry}}/loxone-influx:latest -t {{.Run.Registry}}/loxone-influx:$(date +"%Y%m%d") --platform linux/amd64,linux/arm64,linux/arm/v7 -f dockerfile --push .
