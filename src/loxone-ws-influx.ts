@@ -40,5 +40,10 @@ loxoneConnection.on("update", function (event: LoxoneUpdateEvent) {
     }
 });
 
+loxoneConnection.on("authorized", function() {
+    Logger.log_info("Authorized event");
+});
+
+
 recurringSender.init();
 loxoneConnection.connect();

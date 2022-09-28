@@ -12,7 +12,7 @@ class RecurringSender {
         setInterval(function () {
             for (const [uuid, rememberedValue] of that.rememberedValues) {
                 if (rememberedValue.sendAfter < new Date()) {
-                    Logger_1.Logger.log_info("--> CACHE " + rememberedValue.event.mapping.measurement + ', ' + rememberedValue.event.mapping.getTagsAsText() + ', value=' + rememberedValue.event.value.toString());
+                    Logger_1.Logger.log_info("--> CACHE  " + rememberedValue.event.mapping.measurement + ', ' + rememberedValue.event.mapping.getTagsAsText() + ', value=' + rememberedValue.event.value.toString());
                     rememberedValue.event.date = new Date();
                     that.influxStore.sendLoxoneUpdateEventToInflux(rememberedValue.event);
                     rememberedValue.calcNextSend();

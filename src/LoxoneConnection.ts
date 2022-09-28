@@ -29,36 +29,51 @@ class LoxoneConnection extends EventEmitter {
 
         this.loxoneAPI.on('connect', function() {
             Logger.log_info("Loxone connected!");
+            that.emit("connect");
         });
 
-        this.loxoneAPI.on('close', function() {
-            that.emit("close");
-            Logger.log_info("Loxone closed!");
+        this.loxoneAPI.on('reconnect', function() {
+            Logger.log_info("Loxone reconnecting");
+            that.emit("reconnect");
         });
-        
+
+        this.loxoneAPI.on('close', function(info:boolean, reason:string) {
+            Logger.log_info("Loxone closed! (" + reason + ")");
+            that.emit("close");
+        });
+
+        this.loxoneAPI.on('get_structure_file', function(filedata) {
+            Logger.log_info("Got structure file! Last modified: " + filedata.lastModified);
+            that.emit("get_structure_file");
+        });
+
+        this.loxoneAPI.on('send', function(message) {
+            Logger.log_debug("Sent message");
+            that.emit("send");
+        });
+
         this.loxoneAPI.on('abort', function() {
-            Logger.log_info("Loxone aborted!");
+            Logger.log_error("Loxone aborted!");
             process.exit();
         });
         
         this.loxoneAPI.on('close_failed', function() {
-            Logger.log_info("Loxone close failed!");
+            Logger.log_error("Loxone close failed!");
             process.exit();
         });
         
-        this.loxoneAPI.on('connect_failed', function(error) {
+        this.loxoneAPI.on('connect_failed', function(error, reason) {
             Logger.log_info('Loxone connect failed!');
         });
         
-        this.loxoneAPI.on('connection_error', function(error) {
-            emit("connection_error");
+        this.loxoneAPI.on('connection_error', function(error, reason) {
             if (error != undefined) {
                 Logger.log_info('Loxone connection error: ' + error.toString());
             }
             else {
                 Logger.log_info('Loxone connection error');
             }
-            that.retryConnect();    
+            that.emit("connection_error");
         });
         
         this.loxoneAPI.on('auth_failed', function(error) {
@@ -66,10 +81,8 @@ class LoxoneConnection extends EventEmitter {
         });
         
         this.loxoneAPI.on('authorized', function() {
-            emit("authorized");
-            that.retryCount = 0;
             Logger.log_info('Loxone authorized');
-            setTimeout(function() { that.loxoneAPI.send_command('jdev/cfg/version') }, 5000);    
+            that.emit("authorized");
         });
         
         this.loxoneAPI.on('update_event_value', function(uuid, evt) {
@@ -79,25 +92,6 @@ class LoxoneConnection extends EventEmitter {
         process.on('SIGINT', function () {
             that.loxoneAPI.abort();
         });
-    }
-
-    private retryConnect() {
-        if (this.retryCount < 10) {
-            this.retryCount++;
-        }
-        
-        var delayInMilliseconds = this.getExponentialFallbackDelay(this.retryCount);
-        Logger.log_info('Sleeping for ' + delayInMilliseconds + ' milliseconds before retrying...' + this.retryCount);
-        setTimeout(function () { this.loxoneAPI.connect(); }, delayInMilliseconds);
-    }
-
-    private getExponentialFallbackDelay(retryCount: number): number {
-        var delayInMilliseconds = 0.5 * Math.pow(2, retryCount) * 1000;
-        if (delayInMilliseconds > this.maxRetryDelayInMs) {
-            delayInMilliseconds = this.maxRetryDelayInMs;
-        }
-    
-        return delayInMilliseconds;
     }
 
     connect() {

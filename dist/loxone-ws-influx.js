@@ -20,7 +20,7 @@ loxoneConnection.on("update", function (event) {
     if (event.uuid in uuidMappings) {
         event.mapping = uuidMappings[event.uuid];
         event.src = "ws";
-        Logger_1.Logger.log_info("--> IN    " + event.mapping.measurement + ', ' + event.mapping.getTagsAsText() + ', value=' + event.value.toString());
+        Logger_1.Logger.log_info("--> IN     " + event.mapping.measurement + ', ' + event.mapping.getTagsAsText() + ', value=' + event.value.toString());
         influxStore.sendLoxoneUpdateEventToInflux(event).catch(err => {
             Logger_1.Logger.log_error(`Error saving data to InfluxDB! ${err.stack}`);
         });
@@ -31,6 +31,9 @@ loxoneConnection.on("update", function (event) {
     else {
         //Logger.log_debug('Ignoring event value: uuid='+event.uuid+', evt='+Utils.limit_str(event.value.toString(), 100)+'');
     }
+});
+loxoneConnection.on("authorized", function () {
+    Logger_1.Logger.log_info("Authorized event");
 });
 recurringSender.init();
 loxoneConnection.connect();

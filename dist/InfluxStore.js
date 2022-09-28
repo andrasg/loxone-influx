@@ -70,18 +70,18 @@ class InfluxStore {
     }
     sendLoxoneUpdateEventToInfluxInternal(loxoneEvent) {
         var point = loxoneEvent.asIPoint();
-        Logger_1.Logger.log_info("OUT -->   " + loxoneEvent.mapping.measurement + ', ' + loxoneEvent.mapping.getTagsAsText() + ', value=' + loxoneEvent.value.toString());
+        Logger_1.Logger.log_info("OUT -->    " + loxoneEvent.mapping.measurement + ', ' + loxoneEvent.mapping.getTagsAsText() + ', value=' + loxoneEvent.value.toString());
         return this.db.writePoints([point], {
             database: this.config.get('influxdb.database'),
             precision: 'ms',
         })
             .then(_ => {
-            Logger_1.Logger.log_debug("OUT -->");
+            Logger_1.Logger.log_debug("OUT -->    (success)");
             if (this.errorPresent)
                 this.setErrorPresent(false);
         })
             .catch(reason => {
-            Logger_1.Logger.log_error("Cannot send point to Influx");
+            Logger_1.Logger.log_error("Cannot send point to Influx: " + reason);
             if (!this.errorPresent)
                 this.setErrorPresent(true);
             this.buffer.push(loxoneEvent);
