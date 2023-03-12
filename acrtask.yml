@@ -1,4 +1,4 @@
 version: v1.1.0
 
 steps:
-- build: -t {{.Run.Registry}}/loxone-influx:latest -t {{.Run.Registry}}/loxone-influx:$(date +"%Y%m%d") .
+- build: -t {{.Run.Registry}}/loxone-influx:latest .
