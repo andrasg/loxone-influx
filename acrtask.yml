@@ -2,3 +2,6 @@ version: v1.1.0
 
 steps:
 - build: -t {{.Run.Registry}}/loxone-influx:latest .
+- push: 
+    - $Registry/loxone-influx:latest
+    - $Registry/loxone-influx:$ID
