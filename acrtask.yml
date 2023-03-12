@@ -1,7 +1,7 @@
 version: v1.1.0
 
 steps:
-- build: -t {{.Run.Registry}}/loxone-influx:latest -t {{.Run.Registry}}/loxone-influx:$Date .
+- build: -t {{.Run.Registry}}/loxone-influx:latest -t {{.Run.Registry}}/loxone-influx:$Date --platform linux/arm64 .
 - push: 
     - $Registry/loxone-influx:latest
     - $Registry/loxone-influx:$Date
