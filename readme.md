@@ -69,6 +69,9 @@ The configuration items under the `uuids` node need to have the following format
     }
 }
 ```
+## Configuration: Extraction of UUIDs
+This [python script](https://github.com/ww00001/loxoneUUIDextract) automates the UUID extraction and generats a config file.
+All uuids which are set up for internal statistics of Loxone software are extracted. 
 
 ## Local build
 
