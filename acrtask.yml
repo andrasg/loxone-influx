@@ -1,4 +1,5 @@
 version: v1.1.0
+stepTimeout: 900
 
 steps:
 - cmd: buildx create --use # start buildkit
