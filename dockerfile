@@ -8,6 +8,6 @@ RUN npm install
 
 COPY src/ /app/src/
 COPY tsconfig.json /app/
-RUN tsc -p tsconfig.json
+RUN npm run tsc
 
 CMD [ "npm", "start" ]
