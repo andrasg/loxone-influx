@@ -1,5 +1,11 @@
 # loxone-influx
 
+## Archival notice
+
+This solution has been archived in favor of https://github.com/andrasg/telegraf-loxone.
+
+## About
+
 This script listens for events on Loxone's websocket (WS) API and adds event data to Influx based on the config.
 
 The script has a buffer of `bufferSize` for regular events and for an additional `criticalBufferSize` for critical events (marked as such in the config). The buffer is used to store events in-memory, in case data cannot be sent to InfluxDb.
